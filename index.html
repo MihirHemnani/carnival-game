@@ -9,7 +9,8 @@
 </head>
 <body>
   <h1> Carnival </h1>
-  <h2> Game </h2>
+  <!-- <h2> Game </h2> -->
+  <h2 id="timer">Timer: 60 seconds</h2>
 
   <div class="game-over">
   <h1>Game Over!</h1>
@@ -31,20 +32,37 @@
   <h3 class="total-count">Targets Hit: &nbsp;</h3>
 
   <script>
-    // Wait for the DOM to be ready
+
+    var timeRemaining = 60; // Set the initial time in seconds
+    var timerElement = document.getElementById('timer');
+
+    function updateTimer() {
+        timerElement.innerText = 'Timer: ' + timeRemaining + ' seconds';
+    }
+
+    function startTimer() {
+        var timerInterval = setInterval(function () {
+            timeRemaining--;
+            updateTimer();
+
+            if (timeRemaining <= 0) {
+                clearInterval(timerInterval);
+            }
+        }, 1000); // Update every second
+    }
+
+    startTimer();
+
+
     document.addEventListener("DOMContentLoaded", function () {
-        // Find the "Play Again" link by its class
         var playAgainLink = document.querySelector(".play-again");
 
-        // Add a click event listener to the link
         playAgainLink.addEventListener("click", function (event) {
-            // Prevent the default behavior of the link
             event.preventDefault();
-            
-            // Reload the current page
             window.location.reload();
         });
     });
+
 </script>
 
 </body>
