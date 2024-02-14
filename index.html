@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carnival Game</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="index.css"
+</head>
+<body>
+  <h1> Carnival </h1>
+  <h2> Game </h2>
+
+  <div class="game-over">
+  <h1>Game Over!</h1>
+  <a class="play-again" target="" href="#">Play Again</a>
+  </div>
+
+  <ul class="game-area">
+  <li><input type="checkbox"><div class="shield"></div></li>
+  <li><input type="checkbox"><div class="shield"></div></li>
+  <li><input type="checkbox"><div class="shield"></div></li>
+  <li><input type="checkbox"><div class="shield"></div></li>
+  <li><input type="checkbox"><div class="shield"></div></li>
+  <li><input type="checkbox"><div class="shield"></div></li>
+  <li><input type="checkbox"><div class="shield"></div></li>
+  <li><input type="checkbox"><div class="shield"></div></li>
+  <li><input type="checkbox"><div class="shield"></div></li>
+  </ul>
+
+  <h3 class="total-count">Targets Hit: &nbsp;</h3>
+
+  <script>
+    // Wait for the DOM to be ready
+    document.addEventListener("DOMContentLoaded", function () {
+        // Find the "Play Again" link by its class
+        var playAgainLink = document.querySelector(".play-again");
+
+        // Add a click event listener to the link
+        playAgainLink.addEventListener("click", function (event) {
+            // Prevent the default behavior of the link
+            event.preventDefault();
+            
+            // Reload the current page
+            window.location.reload();
+        });
+    });
+</script>
+
+</body>
+</html>
