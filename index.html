@@ -1,67 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carnival Game</title>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="index.css"
+    <link rel="stylesheet" href="index.css" />
 </head>
+
 <body>
-  <h1> Carnival </h1>
-  <!-- <h2> Game </h2> -->
-  <h2 id="timer">Timer: 60 seconds</h2>
+    <h1> Carnival </h1>
+    <!-- <h2> Game </h2> -->
+    <h2 id="timer">Timer: 60 seconds</h2>
 
-  <div class="game-over">
-  <h1>Game Over!</h1>
-  <a class="play-again" target="" href="#">Play Again</a>
-  </div>
+    <div class="game-over">
+        <h1>Game Over!</h1>
+        <a class="play-again" target="" href="#">Play Again</a>
+    </div>
 
-  <ul class="game-area">
-  <li><input type="checkbox"><div class="shield"></div></li>
-  <li><input type="checkbox"><div class="shield"></div></li>
-  <li><input type="checkbox"><div class="shield"></div></li>
-  <li><input type="checkbox"><div class="shield"></div></li>
-  <li><input type="checkbox"><div class="shield"></div></li>
-  <li><input type="checkbox"><div class="shield"></div></li>
-  <li><input type="checkbox"><div class="shield"></div></li>
-  <li><input type="checkbox"><div class="shield"></div></li>
-  <li><input type="checkbox"><div class="shield"></div></li>
-  </ul>
+    <ul class="game-area">
+        <li><input type="checkbox">
+            <div class="shield"></div>
+        </li>
+        <li><input type="checkbox">
+            <div class="shield"></div>
+        </li>
+        <li><input type="checkbox">
+            <div class="shield"></div>
+        </li>
+        <li><input type="checkbox">
+            <div class="shield"></div>
+        </li>
+        <li><input type="checkbox">
+            <div class="shield"></div>
+        </li>
+        <li><input type="checkbox">
+            <div class="shield"></div>
+        </li>
+        <li><input type="checkbox">
+            <div class="shield"></div>
+        </li>
+        <li><input type="checkbox">
+            <div class="shield"></div>
+        </li>
+        <li><input type="checkbox">
+            <div class="shield"></div>
+        </li>
+    </ul>
 
-  <h3 class="total-count">Targets Hit: &nbsp;</h3>
+    <h3 class="total-count">Targets Hit: &nbsp;</h3>
 
-  <script>
+    <script>
 
-    document.addEventListener("DOMContentLoaded", function () {
-        var timeRemaining = 60; // Set the initial time in seconds
-        var timerElement = document.getElementById('timer');
+        document.addEventListener("DOMContentLoaded", function () {
+            var timeRemaining = 60; // Set the initial time in seconds
+            var timerElement = document.getElementById('timer');
 
-        function updateTimer() {
-            timerElement.innerText = 'Timer: ' + timeRemaining + ' seconds';
-        }
+            function updateTimer() {
+                timerElement.innerText = 'Timer: ' + timeRemaining + ' seconds';
+            }
 
-        function startTimer() {
-            var timerInterval = setInterval(function () {
-                timeRemaining--;
-                updateTimer();
+            function startTimer() {
+                var timerInterval = setInterval(function () {
+                    timeRemaining--;
+                    updateTimer();
 
-                if (timeRemaining <= 0) {
-                    clearInterval(timerInterval);
-                }
-            }, 1000); // Update every second
-        }
+                    if (timeRemaining <= 0) {
+                        clearInterval(timerInterval);
+                    }
+                }, 1000); // Update every second
+            }
 
-        startTimer();
-        var playAgainLink = document.querySelector(".play-again");
+            startTimer();
+            var playAgainLink = document.querySelector(".play-again");
 
-        playAgainLink.addEventListener("click", function (event) {
-            event.preventDefault();
-            window.location.reload();
+            playAgainLink.addEventListener("click", function (event) {
+                event.preventDefault();
+                window.location.reload();
+            });
         });
-    });
 
-</script>
+        document.querySelectorAll('input[type="checkbox"]').forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                var allChecked = document.querySelectorAll('input[type="checkbox"]:checked').length === 9;
+                document.body.classList.toggle('all-checked', allChecked);
+            });
+        });
+
+    </script>
 
 </body>
+
 </html>
