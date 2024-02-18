@@ -12,7 +12,7 @@
 <body>
     <h1> Carnival </h1>
     <!-- <h2> Game </h2> -->
-    <h2 id="timer">Timer: 60 seconds</h2>
+    <h2 id="timer">Timer: 30 seconds</h2>
 
     <div class="game-over">
         <h1>Game Over!</h1>
@@ -52,11 +52,11 @@
     <h3 class="total-count">Targets Hit: &nbsp;</h3>
 
     <script>
-
+        
         document.addEventListener("DOMContentLoaded", function () {
-            var timeRemaining = 60; // Set the initial time in seconds
+            
             var timerElement = document.getElementById('timer');
-
+            var timeRemaining = 30; // Set the initial time in seconds
             function updateTimer() {
                 timerElement.innerText = 'Timer: ' + timeRemaining + ' seconds';
             }
@@ -68,17 +68,20 @@
 
                     if (timeRemaining <= 0) {
                         clearInterval(timerInterval);
+                        var gameOverDiv = document.querySelector('.game-over');
+                        gameOverDiv.style.webkitAnimationDelay = '0s';
+                        gameOverDiv.style.animationDelay = '0s';
                     }
                 }, 1000); // Update every second
             }
 
-            startTimer();
             var playAgainLink = document.querySelector(".play-again");
-
+            
             playAgainLink.addEventListener("click", function (event) {
                 event.preventDefault();
                 window.location.reload();
             });
+            startTimer();
         });
 
         document.querySelectorAll('input[type="checkbox"]').forEach(function (checkbox) {
